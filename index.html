@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz aniversário</title>
+  <link rel="stylesheet" href="decoracao.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="Foto.jpeg" alt="Foto do casal" class="imagem-central" />
+    <p class="mensagem">Feliz aniversário,minha princesa.<br/>
+      É uma honra te ter ao meu lado,<br/>
+      você me inspira a ser melhor todos os dias.<br/>
+      Eu te amo demais,você é a mulher da minha vida, <br/>
+    tô com muita saudade❤️❤️❤️</p>
+  </div>
+
+  <!-- Corações caindo individualmente -->
+  <div class="coracao-container">
+    <!-- Vários corações serão gerados por JS -->
+  </div>
+
+  <div class="contador">
+    <p id="cronometro">Carregando contador...</p>
+  </div>
+
+  <script>
+    // Gerar corações aleatórios
+    const container = document.querySelector('.coracao-container');
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('coracao');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      container.appendChild(heart);
+    }
+  </script>
+  <script>
+    function atualizarContador() {
+      const destino = new Date("2025-08-22T00:00:00");
+      const agora = new Date();
+      const diferenca = destino - agora;
+  
+      if (diferenca <= 0) {
+        document.getElementById("cronometro").innerText = "Hoje vou ter vc de volta ❤️";
+        return;
+      }
+  
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
+  
+      document.getElementById("cronometro").innerText =
+       ` Faltam ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos para te ver novamente `;
+    }
+  
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
+</body>
+</html>
